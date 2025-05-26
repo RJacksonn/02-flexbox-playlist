@@ -22,12 +22,47 @@ header h1 {
   font-size: 42px;
 }
 
-/* Album card styling */
+
+/* Flexbox container for albums */
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  width: 944px;
+  max-width: 920px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: visible;
+    gap: 20px;
+    align-items: center;
+    padding-bottom: 0;
+  }
+  .album {
+    width: 95vw;
+    max-width: 500px;
+    min-width: 0;
+  }
+}
+
 .album {
   position: relative;
-  width: 220px; 
+  width: 220px;
   background: #fff;
   border: 1px solid #ddd;
+  margin: 0;
 }
 
 .album img {
@@ -51,5 +86,28 @@ header h1 {
 }
 
 .overlay {
- display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.85);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding: 20px;
+  text-align: center;
+  font-size: 15px;
+  z-index: 2;
+  border-radius: 0;
+  pointer-events: none;
+}
+
+.album:hover .overlay,
+.album:focus-within .overlay {
+  opacity: 1;
+  pointer-events: auto;
 }
